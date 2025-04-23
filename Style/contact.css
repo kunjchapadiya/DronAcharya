@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section {
+    padding: 60px 0 60px;
+    background-color: #f8f9fa;
+    flex: 1;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.page-title {
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.contact-info {
+    margin-bottom: 30px;
+}
+
+.contact-info i {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-info i {
+    transform: scale(1.1);
+}
+
+.contact-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-info p {
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.support-hours {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+footer {
+    margin-top: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 20px;
+    }
+    
+    .contact-card {
+        padding: 20px;
+    }
+    
+    .page-title {
+        font-size: 24px;
+    }
+    
+    .contact-info i {
+        font-size: 1.8rem;
+    }
+} 

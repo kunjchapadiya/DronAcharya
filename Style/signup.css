@@ -1,0 +1,62 @@
+/* General Styles */
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+/* Container */
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Left Section */
+.left-section {
+    background: linear-gradient(to right, #2e7d32, #66bb6a); /* Green gradient */
+    color: white;
+    text-align: center;
+}
+
+.left-section h1 {
+    font-weight: bold;
+}
+
+.slogan {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Right Section */
+.right-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+}
+
+/* Form Styling */
+.form-group label {
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #388e3c; /* Dark green */
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2e7d32;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+    
+    .left-section, .right-section {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,175 @@
+.admin-header {
+    background-color: #24262b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: hsl(0, 0%, 100%);
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 15px;
+}
+
+.menu-btn {
+    display: none;
+}
+
+.admin-menu {
+    display: flex;
+    align-items: center;
+}
+
+.admin-menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-menu ul li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.admin-menu ul li a {
+    font-size: 16px;
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: hsl(0, 0%, 100%);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.5s;
+    padding: 15px 0;
+}
+
+.admin-menu ul li a::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: hsl(72, 87%, 51%);
+    transform: scale(0);
+    transition: 0.5s;
+}
+
+.admin-menu ul li a:hover {
+    color: hsl(72, 87%, 51%);
+}
+
+.admin-menu ul li a:hover::after {
+    transform: none;
+}
+
+@media (max-width: 991px) {
+    .menu-btn {
+        height: 36px;
+        width: 44px;
+        background-color: transparent;
+        border: none;
+        display: flex;
+        outline: none;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        padding: 15px;
+    }
+
+    .menu-btn .line {
+        position: absolute;
+        height: 2px;
+        width: 30px;
+        background-color: hsl(0, 0%, 100%);
+        transition: transform 0.5s;
+    }
+
+    .menu-btn .line-1 {
+        transform: translateY(-8px);
+    }
+
+    .menu-btn .line-3 {
+        transform: translateY(8px);
+    }
+
+    .menu-btn.active .line-2 {
+        transform: rotate(-45deg);
+    }
+
+    .menu-btn.active .line-3,
+    .menu-btn.active .line-1 {
+        transform: rotate(-135deg);
+        transform: translateY(0);
+    }
+
+    .admin-menu {
+        position: fixed;
+        left: 100%;
+        top: 0%;
+        height: 100%;
+        background-color: hsl(60, 4%, 9%);
+        width: 280px;
+        padding: 62px 0 30px;
+        transition: transform 0.5s;
+    }
+
+    .admin-menu.open {
+        transform: translateX(-100%);
+    }
+
+    .admin-menu::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 62px;
+        box-sizing: border-box;
+        border-bottom: 1px solid hsla(0, 0%, 100%, 0.15);
+    }
+
+    .admin-menu > ul {
+        max-width: 100%;
+        overflow-y: auto;
+    }
+
+    .admin-menu li {
+        display: block;
+        margin: 0;
+    }
+
+    .admin-menu a {
+        padding: 12px 30px;
+    }
+
+    .admin-menu a::after {
+        content: none;
+    }
+}
+
+/* Add padding to body to account for fixed header */
+body {
+    padding-top: 60px;
+    margin: 0;
+}
+  

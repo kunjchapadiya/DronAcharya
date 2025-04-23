@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-image: url('../Image/hm-sec1-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+.container-fluid {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.login-container {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}
+
+.form-section {
+    flex: 1;
+    padding: 30px;
+    background: white;
+}
+
+.info-section {
+    flex: 1;
+    padding: 30px;
+    background: #69A84F;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.form-control {
+    border-radius: 20px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.btn-submit {
+    background: #69A84F;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: white;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: #558B3F;
+}
+
+.btn-create {
+    background: white;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px 30px;
+    color: #69A84F;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-create:hover {
+    background: transparent;
+    color: white;
+}
+
+h2 {
+    color: #69A84F;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.info-section h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.form-floating {
+    margin-bottom: 15px;
+}
+
+.text-center a {
+    color: #69A84F;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.text-center a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .login-container {
+        flex-direction: row;
+    }
+    
+    .form-section, .info-section {
+        padding: 40px;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .info-section h1 {
+        font-size: 2.5em;
+    }
+    
+    .info-section p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-fluid {
+        padding: 10px;
+    }
+    
+    .form-section, .info-section {
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .info-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .form-control {
+        padding: 8px 15px;
+    }
+    
+    .btn-submit, .btn-create {
+        padding: 8px 15px;
+    }
+} 

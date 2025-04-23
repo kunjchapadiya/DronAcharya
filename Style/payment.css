@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 1000px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+}
+
+/* Left Side: Payment Details */
+.payment-details {
+  width: 45%;
+}
+
+.payment-details h2 {
+  color: #d9534f;
+  margin-bottom: 15px;
+}
+
+.payment-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-details th, 
+.payment-details td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.payment-details th {
+  background: #f2f2f2;
+}
+
+/* Right Side: Card Payment */
+.payment-form {
+  width: 50%;
+}
+
+.payment-form h3 {
+  color: #d9534f;
+  margin-bottom: 15px;
+}
+
+.inputBox {
+  margin-bottom: 15px;
+}
+
+.inputBox label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.inputBox input, 
+.inputBox select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.inputBox img {
+  width: 100px;
+  margin-top: 5px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex .inputBox {
+  width: 48%;
+}
+
+.submit_btn {
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit_btn:hover {
+  background: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      width: 90%;
+  }
+
+  .payment-details,
+  .payment-form {
+      width: 100%;
+  }
+
+  .flex {
+      flex-direction: column;
+  }
+
+  .flex .inputBox {
+      width: 100%;
+  }
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.inputBox input:invalid + .error-message {
+    display: block;
+}
+
+.inputBox input:valid + .error-message {
+    display: none;
+}
+
+.inputBox input:invalid {
+    border-color: #e74c3c;
+}
+
+.inputBox input:valid {
+    border-color: #2ecc71;
+}

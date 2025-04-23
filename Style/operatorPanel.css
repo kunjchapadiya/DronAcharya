@@ -1,0 +1,242 @@
+/* General Styles */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --danger-color: #e74c3c;
+    --light-gray: #ecf0f1;
+    --dark-gray: #34495e;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f6fa;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Content Styles */
+.content {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-card i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+    margin: 0;
+    color: var(--dark-gray);
+    font-size: 1rem;
+}
+
+.stat-card p {
+    margin: 0.5rem 0 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Section Styles */
+.section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.section h2 {
+    margin: 0 0 1.5rem;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.table th {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* Status Badge Styles */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status-badge.available {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-badge.maintenance {
+    background-color: #fff3e0;
+    color: #ef6c00;
+}
+
+.status-badge.running {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
+
+.status-badge.offline {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+/* Form Styles */
+.status-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.form-select-sm {
+    width: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .table-responsive {
+        margin: 0 -1rem;
+    }
+
+    .status-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-select-sm {
+        width: 100%;
+    }
+}
+
+/* Menu Button for Mobile */
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+@media (max-width: 576px) {
+    .menu-btn {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        padding: 1rem;
+    }
+
+    .menu.active {
+        display: block;
+    }
+
+    .menu ul {
+        flex-direction: column;
+    }
+
+    .menu a {
+        display: block;
+        padding: 0.75rem 1rem;
+    }
+} 

@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  max-width: 1170px;
+  margin: auto;
+  padding: 0 15px;
+}
+.header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 10;
+  background-color: #24262b;
+  opacity: 0.8;
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: hsl(0, 0%, 100%);
+  text-transform: capitalize;
+}
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu li {
+  display: inline-block;
+  
+}
+
+.header .menu li + li {
+  margin-left: 40px;
+}
+
+.menu ul li span{
+    top: 50px;
+}
+.header .menu a {
+  font-size: 16px;
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  font-weight: 500;
+  position: relative;
+  transition: color 0.5s;
+}
+
+.header .menu a::after {
+  content: "";
+  position: absolute;
+  height: lpx;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: hsl(72, 87%, 51%);
+  transform: scale(0);
+  transition: 0.5s;
+}
+
+.header .menu a:hover {
+  color: hsl(72, 87%, 51%);
+}
+
+.header .menu a:hover::after {
+  transform: none;
+}
+
+@media (max-width: 991px) {
+  .header {
+    padding: 8px, 0;
+  }
+  .header .menu-btn {
+    height: 36px;
+    width: 44px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header .menu-btn .line {
+    position: absolute;
+    height: 2px;
+    width: 30px;
+    background-color: hsl(0, 0%, 100%);
+    transition: transform 0.5s;
+  }
+
+  .header .menu-btn .line-1 {
+    transform: translateY(-8px);
+  }
+  .header .menu-btn .line-3 {
+    transform: translateY(8px);
+  }
+
+  .header .menu-btn.active .line-2 {
+    transform: rotate(-45deg);
+  }
+
+  .header .menu-btn.active .line-3,
+  .header .menu-btn.active .line-1 {
+    transform: rotate(-135deg);
+    transform: translateY(0);
+  }
+
+  .header .menu {
+    position: fixed;
+    left: 100%;
+    top: 0%;
+    height: 100%;
+    background-color: hsl(60, 4%, 9%);
+    width: 280px;
+    padding: 62px 0 30px;
+    transition: transform 0.5s;
+  }
+
+  .header .menu.open {
+    transform: translateX(-100%);
+  }
+
+  .header .menu::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 62px;
+    box-sizing: border-box;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.15);
+  }
+
+  .header .menu > ul {
+    max-width: 100%;
+    overflow-y: auto;
+  }
+
+  .header .menu li {
+    display: block;
+  }
+
+  .header .menu li + li {
+    margin: 0;
+  }
+
+  .header .menu a {
+    padding: 12px 30px;
+  }
+
+  .header .menu a::after {
+    content: none;
+  }
+}
+
+/* ==================================================     Card Style    ==============================================================*/ 
+.card:hover{
+
+    border: 2px solid black;
+}
+/* footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    font-size: 18px; /* All text in the footer will now use 14px font size */
+    line-height: 1.5; /* Optional for better readability */
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px; /* Ensure links also follow 14px font size */
+  }
+  
+  footer p{
+  
+    font-size: 18px;
+  }
+  footer a:hover {
+    color: #ccc;
+    text-decoration: underline;
+  }
+  
+  .footer-copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 14px; /* Explicitly set the font size here */
+  }
