@@ -10,6 +10,33 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Handle status update
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update_status'])) {
+    $bookingId = $_POST['booking_id'];
+    $newStatus = $_POST['service_status'];
+
+    // Validate $newStatus to prevent SQL injection if it's not from a fixed list
+    $allowed_statuses = ['Completed', 'Cancelled', 'Incomplete', 'Ongoing', 'Confirmed', 'Pending'];
+    if (in_array($newStatus, $allowed_statuses)) {
+        $updateQuery = "UPDATE bookingdata SET serviceStatus = ? WHERE bookingId = ?";
+        $stmt = $conn->prepare($updateQuery);
+        if ($stmt) {
+            $stmt->bind_param("ss", $newStatus, $bookingId);
+            if ($stmt->execute()) {
+                // Optional: Add a success message or redirect
+                 echo "<script>alert('Status updated successfully for Booking ID: " . htmlspecialchars($bookingId) . "'); window.location.href = 'operator-panel.php';</script>";
+            } else {
+                echo "<script>alert('Error updating status: " . htmlspecialchars($stmt->error) . "');</script>";
+            }
+            $stmt->close();
+        } else {
+            echo "<script>alert('Error preparing statement: " . htmlspecialchars($conn->error) . "');</script>";
+        }
+    } else {
+        echo "<script>alert('Invalid status value.');</script>";
+    }
+}
+
 // Get today's bookings
 $today = date('Y-m-d');
 $todayBookingsQuery = "SELECT COUNT(*) as count FROM bookingdata WHERE DATE(bookingDate) = '$today'";
@@ -46,6 +73,40 @@ $todayServices = $conn->query($todayServicesQuery);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="./Style/operator.css">
     <link rel="stylesheet" href="./Style/Common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        .status-form-select {
+            border-radius: 20px;
+            padding: 6px 18px;
+            border: 1px solid #69A84F;
+            margin-right: 8px;
+            min-width: 120px;
+            background: #f8fff5;
+            transition: border-color 0.2s;
+        }
+        .status-form-select:focus {
+            border-color: #558B3F;
+            outline: none;
+        }
+        .status-form-btn {
+            border-radius: 20px;
+            background: #69A84F;
+            color: #fff;
+            border: none;
+            padding: 6px 22px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        .status-form-btn:hover {
+            background: #558B3F;
+        }
+        @media (max-width: 576px) {
+            .status-form-select, .status-form-btn {
+                width: 100%;
+                margin-bottom: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -105,7 +166,8 @@ $todayServices = $conn->query($todayServicesQuery);
                             <th>Water Source</th>
                             <th>Power Source</th>
                             <th>Farm Size</th>
-                        
+                            <th>Current Status</th>
+                            <th>Update Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -123,6 +185,21 @@ $todayServices = $conn->query($todayServicesQuery);
                             <td><?php echo htmlspecialchars($service['waterSource']); ?></td>
                             <td><?php echo htmlspecialchars($service['powerSource']); ?></td>
                             <td><?php echo $service['farmSize']; ?> acres</td>
+                            <td><?php echo htmlspecialchars(isset($service['serviceStatus']) ? $service['serviceStatus'] : 'Pending'); ?></td>
+                            <td>
+                                <form method="POST" action="operator-panel.php">
+                                    <input type="hidden" name="booking_id" value="<?php echo $service['bookingId']; ?>">
+                                    <select name="service_status" class="status-form-select form-select">
+                                        <option value="Completed" <?php echo (isset($service['serviceStatus']) && $service['serviceStatus'] == 'Completed') ? 'selected' : ''; ?>>Completed</option>
+                                        <option value="Cancelled" <?php echo (isset($service['serviceStatus']) && $service['serviceStatus'] == 'Cancelled') ? 'selected' : ''; ?>>Cancelled</option>
+                                        <option value="Incomplete" <?php echo (isset($service['serviceStatus']) && $service['serviceStatus'] == 'Incomplete') ? 'selected' : ''; ?>>Incomplete</option>
+                                        <option value="Ongoing" <?php echo (isset($service['serviceStatus']) && $service['serviceStatus'] == 'Ongoing') ? 'selected' : ''; ?>>Ongoing</option>
+                                        <option value="Confirmed" <?php echo (isset($service['serviceStatus']) && $service['serviceStatus'] == 'Confirmed') ? 'selected' : ''; ?>>Confirmed</option>
+                                        <option value="Pending" <?php echo (!isset($service['serviceStatus']) || $service['serviceStatus'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
+                                    </select>
+                                    <button type="submit" name="update_status" class="status-form-btn">Update</button>
+                                </form>
+                            </td>
                         </tr>
                         <?php endwhile; ?>
                     </tbody>
